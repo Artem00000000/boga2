@@ -51,24 +51,48 @@ while ans[0] == 'Y':
             print(" " + '{:<4d}'.format(x) + a)
     print()
     h = 1
-    x1 = int(input("CHOOSE YOUR POSITION? "))
-    y1 = int(input("?? "))
+    x1 = input("CHOOSE YOUR POSITION? ")
+    pos = x1.split(',')
+    if len(pos) == 2:
+        y1 = int(pos[1])
+        x1 = int(pos[0])
+    else:
+        x1 = int(x1)
+        y1 = int(input("?? "))
     while x1 > g or x1 < 0 or y1 > g or y1 < 0:
         print()
-        x1 = int(input("CHOOSE YOUR POSITION? "))
-        y1 = int(input("?? "))
+        x1 = input("CHOOSE YOUR POSITION? ")
+        pos = x1.split(',')
+        if len(pos) == 2:
+            y1 = int(pos[1])
+            x1 = int(pos[0])
+        else:
+            x1 = int(x1)
+            y1 = int(input("?? "))
     print("THE BOGA PICKS HIS POSITION!")
     x2 = 1
     y2 = 1
     while True:
         print("GUESS #", k, "? ", end="")
-        x3 = int(input())
-        y3 = int(input("?? "))
+        x3 = input()
+        pos = x3.split(',')
+        if len(pos) == 2:
+            y3 = int(pos[1])
+            x3 = int(pos[0])
+        else:
+            x3 = int(x3)
+            y3 = int(input("?? "))
         while x3 > g or x3 < 0 or y3 > g or y3 < 0:
             print()
             print("GUESS #", k, "? ", end="")
-            x3 = int(input())
-            y3 = int(input("?? "))
+            x3 = input()
+            pos = x3.split(',')
+            if len(pos) == 2:
+                y3 = int(pos[1])
+                x3 = int(pos[0])
+            else:
+                x3 = int(x3)
+                y3 = int(input("?? "))
         k += 1
         f += 1
         if k == 10:
