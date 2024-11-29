@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js">
+        </script>
+    </head>
+    <body onload="brython()">
+        <div id="output" style="white-space: pre-wrap;"></div>
+        <input id="input">
+        <button id="button_ok">OK</button>
+        <script type="text/python">
+from browser import document, aio
+
+def print(text, end = '\n'):
+    document ['output'] <= text
+    document ['output'] <= end
+
+{script}
+
+async def prompt():
+    await aio.event (document['button_ok'], "click")
+    v = document['input'].value
+    document['input'].value = ""
+    document ['output'] <= v
+    document ['output'] <= '\n'
+    return v
+
+aio.run(main())
+        </script>
+    </body>
+</html>
